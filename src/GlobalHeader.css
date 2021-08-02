@@ -1,0 +1,25 @@
+.headerSpacer {
+  width: 100%;
+  min-height: 3em;
+}
+
+.globalheader {
+  position: fixed;
+  width:100%;
+  min-height: 3em;
+}
+
+.globalheaderContent {
+  background-color: #54c550;
+  font-size: calc(10px + 2vmin);
+  /* display: flex;
+  flex-direction: row;
+  align-items: center; */
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.globalheaderContent .menuItem {
+  margin: 10px;
+}

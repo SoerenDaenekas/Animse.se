@@ -1,0 +1,38 @@
+.Events {
+    /* display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 992px; */
+}
+
+.Events .SingleEvent {
+    margin-top: 20px;
+    background-color: white;
+}
+
+.Events .SingleEvent .Countdown {
+    background-color: antiquewhite;
+}
+
+.Events .SingleEvent .Info {
+
+    display: block;
+}
+
+.Events .SingleEvent .Info .Title {
+    text-align: start;
+    font-size: 20px;
+}
+
+.Events .SingleEvent .Info .Date {
+    text-align: end;
+    font-size: 20px;
+    color: rgb(59, 59, 190);
+}
+
+.Events .SingleEvent .Location {
+    color: white;
+    padding: 20px 0 20px 0;
+    background-color: rgb(60, 60, 146);
+}
