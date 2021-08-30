@@ -11,7 +11,10 @@ function owo(e) {
     
     fetch("http://api.animse.se:8055/users", requestOptions)
     .then(res => {
-        if (res.ok) return {}
+        console.log(res)
+        if (res.status == 200) {
+            this.setState("success")
+        }
            
 
         return res.json()
@@ -22,10 +25,11 @@ function owo(e) {
 }
 
 function CreateAccount() {
+    var [state, setState] = React.useState("idle")
     var [email, setEmail] = React.useState("")
     var [password, setPassword] = React.useState("")
 
-    return (
+    if (state === "idle") return (
         <div className="container">
             <div className="row">
             <div className="col-md"/>
@@ -43,10 +47,16 @@ function CreateAccount() {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary" onClick={owo.bind({email, password})}>Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={owo.bind({email, password, setState})}>Submit</button>
             </form>
             <div className="col-md"/>
             </div>
+        </div>
+    )
+
+    if (state === "success") return (
+        <div>
+            Nice
         </div>
     )
 }
