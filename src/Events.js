@@ -44,7 +44,7 @@ class Events extends React.Component {
     }
 
     render() {
-        if (this.state.status == 'loading') {
+        if (this.state.status === 'loading') {
             return (
                 <div>
                     loading....
