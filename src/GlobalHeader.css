@@ -1,12 +1,12 @@
 .headerSpacer {
   width: 100%;
-  min-height: 3em;
+  min-height: 4em;
 }
 
 .globalheader {
   position: fixed;
   width:100%;
-  min-height: 3em;
+  min-height: 4em;
 }
 
 .globalheaderContent {

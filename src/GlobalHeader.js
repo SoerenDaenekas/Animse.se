@@ -17,9 +17,6 @@ function GlobalHeader() {
                         <div className="menuItem col-auto">
                             Animse.se
                         </div>
-                        <MenuItem name="Events" />
-                        <MenuItem name="Awoooo" />
-                        <MenuItem name="okay"/>
                         <div className="col"/>
                         <div className="menuItem col-auto">
                             Logga I
