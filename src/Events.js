@@ -4,20 +4,46 @@ import './Events.css';
 function SingleEvent(props) {
     var eventInfo = props.eventInfo
 
+    var date = new Date(eventInfo.startdate)
+    var timeFormatOptions = { hour: "2-digit", minute: "2-digit" };
+    var dateFormatOptions = { day: "numeric", month: "short", year: "numeric" }
+
     return (
-        <div className="SingleEvent row">
-            <div className="Countdown col-md-3">
+        <div className="bg-light mt-2 row">
+            <div className="col-md-3 d-flex align-items-center">
                 <img className="img-fluid" src={"http://api.animse.se:8055/assets/" + eventInfo.banner}/>
             </div>
-            <div className="Info col-md-7">
-                <div className="row">
-                    <div className="Title col-auto">{eventInfo.title}</div>
-                    <div className="Date col">{eventInfo.startdate} - {eventInfo.enddate}</div>
-                    <div>{eventInfo.shortdescription}</div>
+            <div className="col-md my-2">
+                <div className="col text-start">
+                    <h5 className="text-muted">{eventInfo.organizer}</h5>
+                    <h4 className="">{eventInfo.title}</h4>
+                    <div className="">{eventInfo.shortdescription}</div>
                 </div>
             </div>
-            <div className="Location col-md-2">
-                {eventInfo.location}
+            <div className="col-md-4">
+                <div className="row">
+                    <div className="col-auto  mt-4 mb-2 ">
+                        <div className="row">
+                            <div className="d-flex col-auto h3 align-items-center">
+                                <i className="bi bi-clock"></i>
+                            </div>
+                            <div className="col text-start">
+                                <div className="h6 text-muted">{date.toLocaleString("sv-SE", dateFormatOptions)}</div>
+                                <div className="h4">{date.toLocaleString("sv-SE", timeFormatOptions)}</div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div className="row">
+                            <div className="col-auto h4">
+                                <i className="bi bi-box-arrow-in-right"></i>
+                            </div>
+                            <div className="col h6 d-flex  align-items-center">
+                                {eventInfo.location}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

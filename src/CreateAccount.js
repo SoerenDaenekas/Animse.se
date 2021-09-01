@@ -12,7 +12,7 @@ function owo(e) {
     fetch("http://api.animse.se:8055/users", requestOptions)
     .then(res => {
         console.log(res)
-        if (res.status == 200) {
+        if (res.status === 200) {
             this.setState("success")
         }
            
