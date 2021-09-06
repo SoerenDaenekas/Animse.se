@@ -1,0 +1,56 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: whitesmoke;
+  padding-top: 4.5rem;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.rounded-10 {
+  border-radius: 2rem !important;
+}
+
+.object-fit-contain {
+  object-fit: contain;
+}
+
+.object-fit-fill {
+  object-fit: fill;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+}
+
+.custom-red {
+  color: #FC6471;
+}
+
+.custom-dark-background {
+  background-color: #A4D3B7;
+}
+
+.custom-container {
+  @extend .container;
+
+  @include media-breakpoint-up(lg) {
+    max-width: 80vw;
+  }
+  @include media-breakpoint-up(xl) {
+    max-width: 70vw;
+  }
+}
