@@ -1,6 +1,7 @@
 import React from 'react';
+import './CreateAccount.css';
 
-function owo(e) {
+function OnRegister(e) {
     e.preventDefault()
 
     const requestOptions = {
@@ -15,7 +16,6 @@ function owo(e) {
         if (res.status === 200) {
             this.setState("success")
         }
-           
 
         return res.json()
     })
@@ -31,26 +31,38 @@ function CreateAccount() {
 
     if (state === "idle") return (
         <div className="container">
-            <div className="row">
-            <div className="col-md"/>
-            <form className="col-md-8">
-                <div className="form-group row">
-                    <label htmlFor="exampleInputEmail1" className="col-sm-2 col-form-label">Email address</label>
-                    <div className="col-sm-10">
-                        <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+            <form className="col row gy-2 bg-light border rounded-10 p-5">
+                <div className="col-12 text-start">
+                    <h4>Skapa ett <red>konto</red> för att:</h4>
+                    <ul className="ps-5">
+                        <li>gilla och följa föreningar</li>
+                        <li>markera intresse för träffar</li>
+                        <li>skapa föreningar och egna event</li>
+                    </ul>
+                </div>
+                <div className="col-12">
+                    <div className="row">
+                        <div className="col">
+                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Förnamn"/>
+                        </div>
+                        <div className="col">
+                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Efternamn"/>
+                        </div>
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlFor="exampleInputPassword1" className="col-sm-2 col-form-label">Password</label>
-                    <div className="col-sm-10">
-                        <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder="Password"/>
-                    </div>
+                <div className="col-12">
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email"/>
                 </div>
-
-                <button type="submit" className="btn btn-primary" onClick={owo.bind({email, password, setState})}>Submit</button>
+                <div className="col-12">
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder="Lösenord"/>
+                </div>
+                <div className="col-12 d-flex justify-content-end">
+                    <button type="submit" className="btn btn-primary ms-auto" onClick={OnRegister.bind({email, password, setState})}>Skapa konto</button>
+                </div>
+                <div className="col-12 text-start mt-4">
+                    Har du redan ett konto?
+                </div>
             </form>
-            <div className="col-md"/>
-            </div>
         </div>
     )
 
@@ -61,4 +73,7 @@ function CreateAccount() {
     )
 }
 
-export default CreateAccount;
+export default () => 
+<div className="position-fixed w-100 top-50 start-50 translate-middle">
+    <CreateAccount/>
+</div>;

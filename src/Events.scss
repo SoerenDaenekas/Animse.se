@@ -1,0 +1,19 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+
+.min-height-400 {
+    min-height: 400px !important; 
+}
+
+.singleEventBanner {
+    width: 100%;
+    height: auto;
+
+
+    @include media-breakpoint-up(lg) {
+        width: auto;
+        height: 100%;
+    }
+
+}

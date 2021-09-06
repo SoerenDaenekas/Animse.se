@@ -1,8 +1,12 @@
 import './GlobalHeader.css';
 
 function MenuItem(props) {
+    function onClickHandler() {
+        document.location = props.address
+    }
+
     return (
-        <div className="menuItem col-auto">
+        <div className="menuItem col-auto" onClick={() => onClickHandler()}>
             {props.name}
         </div>
     );
@@ -10,23 +14,14 @@ function MenuItem(props) {
 
 function GlobalHeader() {
     return (
-        <div>
-            <header className="globalheader">
-                <div className="globalheaderContent">
-                    <div className="row">
-                        <div className="menuItem col-auto">
-                            Animse.se
-                        </div>
-                        <div className="col"/>
-                        <div className="menuItem col-auto">
-                            Logga I
-                        </div>
-                    </div>
-
-                </div>
-
+        <div className="globalheader fixed-top container-fluid">
+            <header className="navbar custom-container globalheaderContent">
+                <h3 className="menuItem col-auto fw-bold">
+                    Animse
+                </h3>
+                <div className="col"/>
+                <MenuItem name="Account" address="/login"/>
             </header>
-            <div className="headerSpacer"></div>
         </div>
     )
 }

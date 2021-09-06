@@ -10,16 +10,13 @@ function App() {
   return (
     <Router>
       <React.Fragment>
-        <div className="App">
-
           <GlobalHeader/>
           <Switch>
             <Route exact path="/" component={Events} />
-            <Route exact path="/createAccount" component={CreateAccount} />
-            <Route exact path="/createEvent" component={CreateEvent} />
+            <Route path="/createAccount" component={CreateAccount} />
+            <Route path="/createEvent" component={CreateEvent} />
             {/* <Route component={NotFoundScreen} status={404} /> */}
           </Switch>
-        </div>
       </React.Fragment>
 
     </Router>
