@@ -15,7 +15,7 @@ function MenuItem(props) {
 function GlobalHeader() {
     return (
         <div className="globalheader fixed-top container-fluid">
-            <header className="navbar custom-container">
+            <header className="navbar globalheaderContent custom-container">
                 <h3 className="menuItem col-auto fw-bold">
                     Animse
                 </h3>

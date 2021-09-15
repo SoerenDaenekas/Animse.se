@@ -88,7 +88,7 @@ function CreateAccount() {
 export default function CreateAccountContainer() {
     return (
         <div className="pageContainer">
-            <CreateAccount />
+            <CreateAccount/>
         </div>
     )
 }
