@@ -1,14 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'
 import './index.scss';
 
+import GlobalHeader from './GlobalHeader';
+import Events from './Events'
+import CreateAccount from './CreateAccount';
+import CreateEvent from './CreateEvent';
+import ActivateEmail from './ActivateEmail'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GlobalHeader/>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Events}/>
+          <Route path="/createAccount" component={CreateAccount} />
+          <Route path="/createEvent" component={CreateEvent} />
+          <Route path="/activateEmail" component={ActivateEmail} />
+          {/* <Route component={NotFoundScreen} status={404} /> */}
+        </Switch>
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
