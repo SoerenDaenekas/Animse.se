@@ -1,7 +1,5 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,9 +7,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: whitesmoke;
-  padding-top: 4.5rem;
+  background-color: #A4D3B7 !important;
 }
+
+ // The .pageContainer is supposed to create the scrollbar
+#root, body {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+
+// accounts for padding for the titlebar
+// allows per page body styling
+.pageContainer {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding-top: 4em;
+}
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;

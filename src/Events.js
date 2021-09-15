@@ -107,14 +107,19 @@ class Events extends React.Component {
 
     
         return (
-            <div className="custom-container mb-5"> 
+            <div className="custom-container py-4 flex-grow-1"> 
             {
-                this.state.events.map(e => <SingleEvent eventInfo={e} />)
+                this.state.events.map(e => <SingleEvent key={"todo" + e.shortdescription} eventInfo={e} />)
             }            
             </div>
         );
     }
 }
 
-
-export default Events;
+export default function EventsScreen() {
+    return (
+        <div className="pageContainer events">
+            <Events/>
+        </div>
+    )
+};
