@@ -1,5 +1,6 @@
 import React from 'react';
 import './CreateAccount.css';
+import FormPage from '../FormPage';
 
 function OnRegister(e) {
     e.preventDefault()
@@ -24,7 +25,7 @@ function OnRegister(e) {
         })
 }
 
-function CreateAccountForm() {
+function CreateAccountForm(onSubmit) {
     var [state, setState] = React.useState("idle")
     var [email, setEmail] = React.useState("")
     var [password, setPassword] = React.useState("")
@@ -70,25 +71,10 @@ function CreateAccountForm() {
     )
 }
 
-function CreateAccount() {
-    return (
-        <div className="pt-5">
-            <div className="container">
-                <div className="row justify-content-center"> 
-                    <div className="col-xl-6 col-lg-8 col-md-10 col-12 createAccount bg-light"> 
-                        {/* todo: there must be a nicer way */}
-                        <CreateAccountForm/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
 export default function CreateAccountContainer() {
     return (
-        <div className="pageContainer">
-            <CreateAccount/>
-        </div>
+        <FormPage>
+            <CreateAccountForm/>
+        </FormPage>
     )
 }

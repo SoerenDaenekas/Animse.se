@@ -6,10 +6,10 @@ import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'
 import './index.scss';
 
 import GlobalHeader from './GlobalHeader';
-import Events from './Events'
-import CreateAccount from './CreateAccount';
-import CreateEvent from './CreateEvent';
-import ActivateEmail from './ActivateEmail'
+import Events from './pages/Events'
+import CreateAccount from './pages/CreateAccount';
+import CreateEvent from './pages/CreateEvent';
+import ActivateEmail from './pages/ActivateEmail'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 ReactDOM.render(
