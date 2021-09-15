@@ -1,5 +1,5 @@
 import React from 'react';
-
+import FormPage from '../FormPage';
 
 function uwu() {
     const requestOptions = {
@@ -25,7 +25,7 @@ function uwu() {
 }
 
 
-function ActivateEmail() {
+function ActivateEmailForm() {
     var [state, setState] = React.useState("idle")
     
     if (state === "idle") {
@@ -67,4 +67,12 @@ function ActivateEmail() {
 }
 
 
-export default ActivateEmail
+export default function ActivateEmail() {
+    return (
+        <FormPage>
+            <form className="row gy-2 p-3">
+                <ActivateEmailForm/>
+            </form>
+        </FormPage>
+    )
+}
