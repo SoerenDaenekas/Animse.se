@@ -8,6 +8,7 @@ import './index.scss';
 import GlobalHeader from './GlobalHeader';
 import Events from './pages/Events'
 import CreateAccount from './pages/CreateAccount';
+import LoginAccount from './pages/LoginAccount';
 import CreateEvent from './pages/CreateEvent';
 import ActivateEmail from './pages/ActivateEmail'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -19,6 +20,8 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={Events}/>
           <Route path="/createAccount" component={CreateAccount} />
+          <Route path="/login" component={LoginAccount} />
+
           <Route path="/createEvent" component={CreateEvent} />
           <Route path="/activateEmail" component={ActivateEmail} />
           {/* <Route component={NotFoundScreen} status={404} /> */}
