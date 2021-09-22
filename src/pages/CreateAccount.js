@@ -5,6 +5,9 @@ import FormPage from '../FormPage';
 function OnRegister(e) {
     e.preventDefault()
 
+    this.setState("creating")
+
+    return;
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -25,10 +28,11 @@ function OnRegister(e) {
         })
 }
 
-function CreateAccountForm(onSubmit) {
+function CreateAccountForm() {
     var [state, setState] = React.useState("idle")
     var [email, setEmail] = React.useState("")
     var [password, setPassword] = React.useState("")
+    // todo: OkayWithCookies, PrivacyPolicy
 
     if (state === "idle") return (
         <form className="row gy-2 p-3">
@@ -67,7 +71,14 @@ function CreateAccountForm(onSubmit) {
             </div>
  
         </form>
+    )
 
+    if (state === "creating") return (
+        <div className="row p-3">
+            <div className="">
+                Creating account...
+            </div>
+        </div>
     )
 }
 
