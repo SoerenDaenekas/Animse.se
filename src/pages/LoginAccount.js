@@ -1,51 +1,28 @@
-import React from 'react';
-import './CreateAccount.css';
-import FormPage from '../FormPage';
-import {useCookies} from 'react-cookie';
+import React from 'react'
+import './CreateAccount.css'
+import FormPage from '../FormPage'
+import {login} from '../Authentification'
 
-function OnLogin(e) {
+async function OnLogin(e) {
     e.preventDefault()
 
+    var response = await login(this.email, this.password)
 
+    if (response.status === "success") {
+        this.setState("success")
+    }
 
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: this.email, password: this.password })
-    };
-
-    fetch("http://api.animse.se:8055/auth/login", requestOptions)
-        .then(res => {
-            console.log(res)
-
-            if (res.status === 401) {
-                this.setError("password wrong")
-
-                return res.json()
-            }
- 
-            if (res.status === 200) {
-                this.setState("success")
-            }
-
-            return res.json()
-        })
-        .then((data) => {
-            console.log(data)
-
-            if (data.data) {
-                this.setCookie("access_token", data.data.access_token)
-            }
-        })
+    if (response.status === "failed") {
+        this.setError(response.message)
+    }
 }
 
 function LoginForm() {
-    var [state, setState] = React.useState("idle")
-    var [error, setError] = React.useState("")
-    var [email, setEmail] = React.useState("")
-    var [password, setPassword] = React.useState("")
-    const [cookies, setCookie, removeCookie] = useCookies(['access_token']);
-
+    const [state, setState] = React.useState("idle")
+    const [error, setError] = React.useState("")
+    const [email, setEmail] = React.useState("")
+    const [password, setPassword] = React.useState("")
+  
     if (state === "success") return (
         <div>
             uwu
@@ -74,7 +51,7 @@ function LoginForm() {
             </div>
 
             <div className="col-6 d-flex justify-content-end">
-                <button type="submit" className="btn btn-primary ms-auto" onClick={OnLogin.bind({ email, password, setState, setError, setCookie })}>Logga i</button>
+                <button type="submit" className="btn btn-primary ms-auto" onClick={OnLogin.bind({ email, password, setState, setError })}>Logga i</button>
             </div>
  
         </form>
