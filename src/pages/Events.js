@@ -77,42 +77,37 @@ function SingleEvent(props) {
     );
 }
 
-class Events extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            events: [],
-            status: 'loading'
-        }
-    }
+function Events() {
+    var [state, setState] = React.useState({
+        events: [],
+        status: 'loading'
+    })
 
-    componentDidMount() {
+    React.useEffect(() => {
         getEvents().then((data) => {
-            this.setState({
+            setState({
                 events: data.data,
                 status: 'idle'
             })
         }) 
-    }
+    }, [])
 
-    render() {
-        if (this.state.status === 'loading') {
-            return (
-                <div>
-                    loading....
-                </div>
-            )
-        }
 
-    
+    if (state.status === 'loading') {
         return (
-            <div className="custom-container py-4 flex-grow-1"> 
-            {
-                this.state.events.map(e => <SingleEvent key={"todo" + e.shortdescription} eventInfo={e} />)
-            }            
+            <div>
+                loading....
             </div>
-        );
+        )
     }
+
+    return (
+        <div className="custom-container py-4 flex-grow-1"> 
+        {
+            state.events.map(e => <SingleEvent key={"todo" + e.shortdescription} eventInfo={e} />)
+        }            
+        </div>
+    );
 }
 
 export default function EventsScreen() {
