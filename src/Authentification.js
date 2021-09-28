@@ -75,12 +75,17 @@ export async function createEvent(eventName, eventDate, eventLocation, descripti
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': getBearerHeader() },
-        body: JSON.stringify({ title: eventName, startdate: eventDate, location: eventLocation, description: eventShortDescription })
+        body: JSON.stringify({ title: eventName, startdate: eventDate, location: eventLocation, description: description })
     };
 
     console.log(requestOptions)
     var owo = await fetch("http://api.animse.se:8055/items/animeevents", requestOptions)
-    console.log(owo)
+    
     console.log(await owo.json())
 
+}
+
+export async function getEvents() {
+    var res = await fetch("http://api.animse.se:8055/items/animeevents/")
+    return await res.json()
 }

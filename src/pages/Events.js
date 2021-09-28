@@ -1,5 +1,6 @@
 import React from 'react';
 import './Events.scss';
+import {getEvents} from '../Authentification'
 
 function SingleEvent(props) {
     var timeFormatOptions = { hour: "2-digit", minute: "2-digit" };
@@ -86,14 +87,12 @@ class Events extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://api.animse.se:8055/items/animeevents/")
-        .then(res => res.json())
-        .then((data) => {
+        getEvents().then((data) => {
             this.setState({
                 events: data.data,
                 status: 'idle'
             })
-        })        
+        }) 
     }
 
     render() {
