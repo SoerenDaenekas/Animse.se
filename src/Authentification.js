@@ -1,5 +1,6 @@
-import { ApiUrl } from "./Globals";
 import Cookies from "js-cookie";
+
+const ApiUrl = "http://api.animse.se:8055"
 
   /**
    * @return {boolean} determening if the refresh was successful
@@ -54,6 +55,8 @@ export async function login(email, password) {
 
     var json = await res.json()
 
+    //todo handle error messages
+
     var expire = new Date(new Date().getTime() + json.data.expires);
 
     Cookies.set("access_token", json.data.access_token, {expires: expire})
@@ -62,12 +65,35 @@ export async function login(email, password) {
     return { status: "success" }
 }
 
+export async function register(firstName, lastName, email, password) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ first_name: firstName, last_name: lastName, email, password })
+    };
+
+    var res = await fetch(ApiUrl + "/register/createAccount", requestOptions)
+
+    
+    return await res.json()
+
+
+
+}
+
+export async function sendConfirmationEmail() {
+    //todo
+}
+
 function getBearerHeader() {
     // todo refresh if expired
     return "Bearer " + Cookies.get("access_token")
 }
 
 
+  /**
+   * @return {boolean} whether creating the event was successful or not
+   */
 export async function createEvent(eventName, eventDate, eventLocation, description) {
     // todo not logged in
   
@@ -79,13 +105,33 @@ export async function createEvent(eventName, eventDate, eventLocation, descripti
     };
 
     console.log(requestOptions)
-    var owo = await fetch("http://api.animse.se:8055/items/animeevents", requestOptions)
+    var owo = await fetch(ApiUrl + "/items/animeevents", requestOptions)
     
     console.log(await owo.json())
 
+    //todo 
+
+    return true
 }
 
 export async function getEvents() {
-    var res = await fetch("http://api.animse.se:8055/items/animeevents/")
+    var res = await fetch(ApiUrl + "/items/animeevents/")
     return await res.json()
+}
+
+export async function getLoggedInUserInfo() {
+
+    if (!await isLoggedIn()){
+        return false;
+    }
+
+    const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json', 'Authorization': getBearerHeader() },
+    };
+    var res = await fetch(ApiUrl + "/users/me", requestOptions) 
+
+    return await res.json()
+
+    
 }

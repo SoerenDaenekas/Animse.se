@@ -1,1 +1,0 @@
-export const ApiUrl = "http://api.animse.se:8055"

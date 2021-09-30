@@ -1,4 +1,6 @@
+import { getLoggedInUserInfo } from './Authentification';
 import './GlobalHeader.css';
+import React from 'react';
 
 function MenuItem(props) {
     function onClickHandler() {
@@ -6,13 +8,17 @@ function MenuItem(props) {
     }
 
     return (
-        <div className="menuItem col-auto" onClick={() => onClickHandler()}>
+        <a href="#" className="menuItem col-auto" onClick={() => onClickHandler()}>
             {props.name}
-        </div>
+        </a>
     );
 }
 
 function GlobalHeader() {
+    const [fullName, setFullName] = React.useState("")
+
+    getLoggedInUserInfo().then(data =>{setFullName(data.data.first_name + " " + data.data.last_name)})
+
     return (
         <div className="globalheader fixed-top container-fluid">
             <header className="navbar globalheaderContent custom-container">
@@ -20,7 +26,8 @@ function GlobalHeader() {
                     Animse
                 </h3>
                 <div className="col"/>
-                <MenuItem name="Account" address="/login"/>
+                <div className="col-auto">{fullName}</div>
+                <MenuItem name="Login" address="/login"/>
             </header>
         </div>
     )

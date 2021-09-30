@@ -19,7 +19,7 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/" component={Events}/>
-          <Route path="/createAccount" component={CreateAccount} />
+          <Route path="/register" component={CreateAccount} />
           <Route path="/login" component={LoginAccount} />
 
           <Route path="/createEvent" component={CreateEvent} />

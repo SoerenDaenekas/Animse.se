@@ -2,6 +2,7 @@ import React from 'react'
 import './CreateAccount.css'
 import FormPage from '../FormPage'
 import {login} from '../Authentification'
+import { Link } from 'react-router-dom'
 
 async function OnLogin(e) {
     e.preventDefault()
@@ -32,10 +33,16 @@ function LoginForm() {
     if (state === "idle") return (
         <form className="row gy-2 p-3">
 
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">Login</li>
+                    <li class="breadcrumb-item"><Link to="/register">Register</Link></li>
+                </ol>
+            </nav>
+
             <div className="col-12 text-start">
                 <h4>Logga i</h4>
             </div>
-
 
             <div className="col-12">
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" />
@@ -47,7 +54,7 @@ function LoginForm() {
             </div>
 
             <div className="col-6 text-start mt-4">
-                Har du inte ett konto? {error}
+                {error}
             </div>
 
             <div className="col-6 d-flex justify-content-end">
